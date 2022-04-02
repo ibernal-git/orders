@@ -110,6 +110,23 @@
   "resolved" "https://registry.npmjs.org/@panva/hkdf/-/hkdf-1.0.1.tgz"
   "version" "1.0.1"
 
+"@prisma/client@3.11.1":
+  "integrity" "sha512-B3C7zQG4HbjJzUr2Zg9UVkBJutbqq9/uqkl1S138+keZCubJrwizx3RuIvGwI+s+pm3qbsyNqXiZgL3Ir0fSng=="
+  "resolved" "https://registry.npmjs.org/@prisma/client/-/client-3.11.1.tgz"
+  "version" "3.11.1"
+  dependencies:
+    "@prisma/engines-version" "3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9"
+
+"@prisma/engines-version@3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9":
+  "integrity" "sha512-HkcsDniA4iNb/gi0iuyOJNAM7nD/LwQ0uJm15v360O5dee3TM4lWdSQiTYBMK6FF68ACUItmzSur7oYuUZ2zkQ=="
+  "resolved" "https://registry.npmjs.org/@prisma/engines-version/-/engines-version-3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9.tgz"
+  "version" "3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9"
+
+"@prisma/engines@3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9":
+  "integrity" "sha512-MILbsGnvmnhCbFGa2/iSnsyGyazU3afzD7ldjCIeLIGKkNBMSZgA2IvpYsAXl+6qFHKGrS3B2otKfV31dwMSQw=="
+  "resolved" "https://registry.npmjs.org/@prisma/engines/-/engines-3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9.tgz"
+  "version" "3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9"
+
 "@rushstack/eslint-patch@1.0.8":
   "integrity" "sha512-ZK5v4bJwgXldAUA8r3q9YKfCwOqoHTK/ZqRjSeRXQrBXWouoPnS4MQtgC4AXGiiBuUu5wxrRgTlv0ktmM4P1Aw=="
   "resolved" "https://registry.npmjs.org/@rushstack/eslint-patch/-/eslint-patch-1.0.8.tgz"
@@ -1920,6 +1937,13 @@
   "integrity" "sha1-v77VbV6ad2ZF9LH/eqGjrE+jw4U="
   "resolved" "https://registry.npmjs.org/pretty-format/-/pretty-format-3.8.0.tgz"
   "version" "3.8.0"
+
+"prisma@*", "prisma@3.11.1":
+  "integrity" "sha512-aYn8bQwt1xwR2oSsVNHT4PXU7EhsThIwmpNB/MNUaaMx5OPLTro6VdNJe/sJssXFLxhamfWeMjwmpXjljo6xkg=="
+  "resolved" "https://registry.npmjs.org/prisma/-/prisma-3.11.1.tgz"
+  "version" "3.11.1"
+  dependencies:
+    "@prisma/engines" "3.11.1-1.1a2506facaf1a4727b7c26850735e88ec779dee9"
 
 "progress@^2.0.0":
   "integrity" "sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA=="
