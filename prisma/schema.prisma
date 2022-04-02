@@ -9,3 +9,48 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_MIGRATIONS")
 }
+
+model User {
+  id            String       @default(cuid()) @id
+  name          String?
+  email         String?   @unique
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  @@map(name: "users")
+}
+
+model Client {
+  id                  String     @default(cuid()) @id
+  documentType        DocumentType @default(NIF) @map(name: "document_type")
+  documentNumber      String @map(name: "document_number")
+  documentNationality String @map(name: "document_nationality")
+  nationality         String
+  sex                 Sex?
+  streetType          String? @map(name: "street_type")
+  street              String
+  streetNumber        String @map(name: "street_number")
+  postalCode          String @map(name: "postal_code")
+  city                String
+  province            String
+  country             String @default("ES")
+  phoneNumber         String @map(name: "phone_number")
+  email               String?
+  createdAt           DateTime  @default(now()) @map(name: "created_at")
+  updatedAt           DateTime?  @updatedAt @map(name: "updated_at")
+  @@map(name: "clients")
+}
+
+
+enum DocumentType {
+  NIF
+  NIE
+  DRIVING_LICENSE
+  PASSPORT
+  ID_CARD
+  OTHER
+}
+
+enum Sex {
+  MALE
+  FEMALE
+}
