@@ -10,33 +10,81 @@ datasource db {
   url      = env("DATABASE_MIGRATIONS")
 }
 
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?  @db.Text
+  session_state      String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map(name: "accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@map(name: "sessions")
+}
+
 model User {
-  id            String       @default(cuid()) @id
+  id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  emailVerified DateTime?
+  image         String?
+  role          Role      @default(USER)
+  accounts      Account[]
+  sessions      Session[]
   @@map(name: "users")
 }
 
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map(name: "verification_tokens")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
 model Client {
-  id                  String     @default(cuid()) @id
+  id                  String       @default(cuid()) @id
   documentType        DocumentType @default(NIF) @map(name: "document_type")
-  documentNumber      String @map(name: "document_number")
-  documentNationality String @map(name: "document_nationality")
-  nationality         String @default("ESPAÑOLA")
+  documentNumber      String       @map(name: "document_number")
+  documentNationality String?      @default("ESPAÑA") @map(name: "document_nationality")
+  nationality         String?      @default("ESPAÑOLA")
+  name                String
+  firstSurname        String?      @map(name: "first_surname")
+  secondSurname       String?      @map(name: "second_surname")
+  dateOfBirth         DateTime?    @map(name: "date_of_birth")
   sex                 Sex?
-  streetType          String? @map(name: "street_type")
+  streetType          String       @map(name: "street_type")
   street              String
-  streetNumber        String @map(name: "street_number")
-  postalCode          String @map(name: "postal_code")
+  streetNumber        String       @map(name: "street_number")
+  postalCode          String       @map(name: "postal_code")
   city                String
   province            String
-  country             String @default("ESPAÑA")
-  phoneNumber         String @map(name: "phone_number")
+  country             String       @default("ESPAÑA")
+  phoneNumber         String       @map(name: "phone_number")
   email               String?
-  createdAt           DateTime  @default(now()) @map(name: "created_at")
-  updatedAt           DateTime?  @updatedAt @map(name: "updated_at")
   orders              Order[]
   @@map(name: "clients")
 }
@@ -44,20 +92,48 @@ model Client {
 model Order {
   id                  String       @default(cuid()) @id
   orderDate           DateTime     @default(now()) @map(name: "order_date")
+  orderFinishDate     DateTime?    @map(name: "order_finish_date")
   brand               String
   model               String
   serialNumber        String       @map(name: "serial_number")
   color               String
   imei                String?
-  operation           Operation
+  operation           Operation    @default(REPAIR)
   currentDamages      String?      @map(name: "current_damages")
   issue               String
   elementsLeft        String?      @map(name: "elements_left")
   password            String?
-  objectType          ObjectType   @map(name: "object_type")
+  repairDescription   String?      @map(name: "repair_description")
+  objectType          ObjectType   @default(DESKTOP) @map(name: "object_type")
+  cost                Float?
+  materialCost        Float?       @map(name: "material_cost")
+  state               State        @default(PENDING)
+  createdAt           DateTime     @default(now()) @map(name: "created_at")
+  updatedAt           DateTime?    @updatedAt @map(name: "updated_at")
   client              Client       @relation(fields: [clientId], references: [id])
   clientId            String
   @@map(name: "orders")
+}
+enum State {
+  PENDING
+  IN_PROGRESS
+  FINISHED
+}
+
+model Setting {
+  id                         String  @default(cuid()) @id
+  authorizationPolicy        String? @map(name: "authorization_policy")
+  privacyPolicy              String? @map(name: "privacy_policy")
+  contactText                String?
+  brandColorRed              Int?
+  brandColorGreen            Int?
+  brandColorBlue             Int?
+  defaultCity                String?
+  defaultCountry             String?
+  defaultProvince            String?
+  defaultDocumentNationality String?
+  defaultNationality         String?
+  @@map(name: "settings")
 }
 
 enum DocumentType {
