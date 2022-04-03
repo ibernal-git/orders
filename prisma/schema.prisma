@@ -24,7 +24,7 @@ model Client {
   documentType        DocumentType @default(NIF) @map(name: "document_type")
   documentNumber      String @map(name: "document_number")
   documentNationality String @map(name: "document_nationality")
-  nationality         String
+  nationality         String @default("ESPAÑOLA")
   sex                 Sex?
   streetType          String? @map(name: "street_type")
   street              String
@@ -32,14 +32,33 @@ model Client {
   postalCode          String @map(name: "postal_code")
   city                String
   province            String
-  country             String @default("ES")
+  country             String @default("ESPAÑA")
   phoneNumber         String @map(name: "phone_number")
   email               String?
   createdAt           DateTime  @default(now()) @map(name: "created_at")
   updatedAt           DateTime?  @updatedAt @map(name: "updated_at")
+  orders              Order[]
   @@map(name: "clients")
 }
 
+model Order {
+  id                  String       @default(cuid()) @id
+  orderDate           DateTime     @default(now()) @map(name: "order_date")
+  brand               String
+  model               String
+  serialNumber        String       @map(name: "serial_number")
+  color               String
+  imei                String?
+  operation           Operation
+  currentDamages      String?      @map(name: "current_damages")
+  issue               String
+  elementsLeft        String?      @map(name: "elements_left")
+  password            String?
+  objectType          ObjectType   @map(name: "object_type")
+  client              Client       @relation(fields: [clientId], references: [id])
+  clientId            String
+  @@map(name: "orders")
+}
 
 enum DocumentType {
   NIF
@@ -53,4 +72,23 @@ enum DocumentType {
 enum Sex {
   MALE
   FEMALE
+}
+
+enum Operation {
+  REPAIR
+  MAINTENANCE
+  INSTALLATION
+  DATA_RECOVERY
+  OTHER
+}
+
+enum ObjectType {
+  DESKTOP
+  LAPTOP
+  AIO
+  SMARTPHONE
+  TABLET
+  SMARTWATCH
+  GPS
+  OTHER
 }
