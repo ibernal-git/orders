@@ -1,9 +1,10 @@
 import { NextPage } from 'next'
 import {
   getSession,
-  signOut,
   useSession
 } from 'next-auth/react'
+import Clients from '../../components/Clients'
+import Header from '../../components/Header'
 
 const App: NextPage = () => {
   const { data: session } = useSession()
@@ -12,10 +13,10 @@ const App: NextPage = () => {
   })
 
   return (
-    <>
-      <h1 className='text-lg font-bold'>Hidden</h1>
-      <button onClick={() => signOut({ callbackUrl: '/' })}>Cerrar Sesión</button>
-    </>
+    <div className="h-screen bg-secondary">
+      <Header />
+      <Clients />
+    </div>
   )
 }
 export default App
