@@ -26,7 +26,7 @@ export function I18NProvider ({ children }: Props) {
     if (args.length === 0) return translation
 
     args.forEach((value, index) => {
-      translation = translation.replace(`%${index + 1}`, value)
+      translation = translation?.replace(`%${index + 1}`, value)
     })
     return translation
   }, [locale])
