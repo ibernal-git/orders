@@ -67,7 +67,7 @@
   "resolved" "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   "version" "1.2.1"
 
-"@next-auth/prisma-adapter@^1.0.3":
+"@next-auth/prisma-adapter@1.0.3":
   "integrity" "sha512-3Lq1cD3ytKM3EGKJZ4UZvlqshLtlPvYxLeCrUV9ifYwYlq51kmDaHjsIawlp8EbH5pE1UhlsvtlXMery7RghtA=="
   "resolved" "https://registry.npmjs.org/@next-auth/prisma-adapter/-/prisma-adapter-1.0.3.tgz"
   "version" "1.0.3"
@@ -84,9 +84,9 @@
   dependencies:
     "glob" "7.1.7"
 
-"@next/swc-darwin-x64@12.1.2":
-  "integrity" "sha512-evXxJQnXEnU+heWyun7d0UV6bhBcmoiyFGR3O3v9qdhGbeXh+SXYVxRO69juuh6V7RWRdlb1KQ0rGUNa1k0XSw=="
-  "resolved" "https://registry.npmjs.org/@next/swc-darwin-x64/-/swc-darwin-x64-12.1.2.tgz"
+"@next/swc-win32-x64-msvc@12.1.2":
+  "integrity" "sha512-MLNcurEpQp0+7OU9261f7PkN52xTGkfrt4IYTIXau7DO/aHj927oK6piIJdl9EOHdX/KN5W6qlyErj170PSHtw=="
+  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.1.2.tgz"
   "version" "12.1.2"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -115,7 +115,7 @@
   "resolved" "https://registry.npmjs.org/@panva/hkdf/-/hkdf-1.0.1.tgz"
   "version" "1.0.1"
 
-"@prisma/client@^3.11.1", "@prisma/client@>=2.26.0 || >=3":
+"@prisma/client@>=2.26.0 || >=3", "@prisma/client@3.11.1":
   "integrity" "sha512-B3C7zQG4HbjJzUr2Zg9UVkBJutbqq9/uqkl1S138+keZCubJrwizx3RuIvGwI+s+pm3qbsyNqXiZgL3Ir0fSng=="
   "resolved" "https://registry.npmjs.org/@prisma/client/-/client-3.11.1.tgz"
   "version" "3.11.1"
@@ -1187,11 +1187,6 @@
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
 
-"fsevents@~2.3.2":
-  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
-  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
-  "version" "2.3.2"
-
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
   "resolved" "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
@@ -1639,7 +1634,7 @@
   "resolved" "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   "version" "1.4.0"
 
-"next-auth@^4.0.1", "next-auth@^4.3.1":
+"next-auth@^4.0.1", "next-auth@4.3.1":
   "integrity" "sha512-DBYEPBLq5naIqh/1i2zEHljcA1OXXecKW3NRU1W4s6R3UX3RdLZ2lWlqgBHUiZQ1zdNikFM/bYQxVGyG7bx8oA=="
   "resolved" "https://registry.npmjs.org/next-auth/-/next-auth-4.3.1.tgz"
   "version" "4.3.1"
