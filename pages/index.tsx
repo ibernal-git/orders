@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useI18N } from '../ context/i18n'
-import { getSession, getProviders } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 import LoginButton from '../components/LoginButton'
 
 const Home: NextPage = () => {
@@ -38,12 +38,16 @@ export default Home
 
 export async function getServerSideProps (context: any) {
   const session = await getSession(context)
-  const providers = await getProviders()
-  console.log(providers)
+  let destination = '/app/'
+  const defaultLocale = context.defaultLocale
+  if (context.locale !== defaultLocale) {
+    destination = `/${context.locale}/app/`
+  }
+  console.log(destination)
   if (session) {
     return {
       redirect: {
-        destination: '/app/',
+        destination: destination,
         permanent: false
       }
     }
