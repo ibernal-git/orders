@@ -1,17 +1,9 @@
 import { NextPage } from 'next'
-import {
-  getSession,
-  useSession
-} from 'next-auth/react'
+import { getUserSession } from '../../lib/session'
 import Clients from '../../components/Clients'
 import Header from '../../components/Header'
 
 const App: NextPage = () => {
-  const { data: session } = useSession()
-  console.log({
-    session
-  })
-
   return (
     <div className="h-screen bg-secondary">
       <Header />
@@ -22,11 +14,11 @@ const App: NextPage = () => {
 export default App
 
 export async function getServerSideProps (context: any) {
-  const session = await getSession(context)
+  const { session, destination } = await getUserSession(context)
   if (!session) {
     return {
       redirect: {
-        destination: '/api/auth/signin?callbackUrl=http://localhost:3000/app/',
+        destination: destination,
         permanent: false
       }
     }
