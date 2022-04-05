@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { getUserSession } from '../../lib/session'
 import Clients from '../../components/Clients'
 import Header from '../../components/Header'
@@ -13,7 +13,7 @@ const App: NextPage = () => {
 }
 export default App
 
-export async function getServerSideProps (context: any) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const { session, destination } = await getUserSession(context)
   if (!session) {
     return {

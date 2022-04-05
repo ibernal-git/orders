@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useI18N } from '../ context/i18n'
@@ -36,7 +36,7 @@ const Home: NextPage = () => {
 
 export default Home
 
-export async function getServerSideProps (context: any) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   let destination = '/app/'
   const defaultLocale = context.defaultLocale
   if (context.locale !== defaultLocale) {
