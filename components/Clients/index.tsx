@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { useI18N } from '../../ context/i18n'
 
 const MOCK_ORDERS = [
@@ -95,6 +96,8 @@ export default function Clients () {
     FINISHED: 'bg-green-200'
   } as stateType
   return (
+    <>
+    {/*
     <div className="">
       <div className="align-middle inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12">
           <div className="flex justify-between">
@@ -206,6 +209,55 @@ export default function Clients () {
         </div>
       </div>
     </div>
+    */}
+    <div className="align-middle inline-block min-w-full shadow overflow-hidden bg-white shadow-dashboard px-8 pt-3 rounded-bl-lg rounded-br-lg">
+      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 bg-white grid-flow-row auto-cols-auto">
+      {/*  HEAD */}
+      <div className="hidden lg:block px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">ID</div>
+      <div className="hidden lg:block px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Nombre</div>
+      <div className="hidden lg:block px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Entrada</div>
+      <div className="hidden lg:block px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Salida</div>
+      <div className="hidden lg:block px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Incidencia</div>
+      <div className="hidden lg:block px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Coste</div>
+      <div className="hidden lg:block px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">Estado</div>
+      <div className="hidden lg:block px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider"></div>
+
+      {
+        MOCK_ORDERS.map(order => (
+          <Fragment key={order.id}>
+            <div className="px-6 py-4 whitespace-no-wrap lg:border-b text-blue-900 lg:border-gray-500 text-sm leading-5">
+              <div className="flex items-center">
+                <div>
+                  <div className="text-sm leading-5 text-gray-800"><div className='lg:hidden text-left leading-4 text-blue-500 tracking-wider'>ID</div>{order.id}</div>
+                </div>
+              </div>
+            </div>
+            <div className="hidden md:block px-6 py-4 whitespace-no-wrap lg:border-b text-blue-900 lg:border-gray-500 text-sm leading-5">
+              <div className="text-sm leading-5 text-blue-900"><div className='lg:hidden text-left text-sm leading-4 text-blue-500 tracking-wider'>Nombre</div>{order.client.name}</div>
+            </div>
+            <div className="px-6 py-4 whitespace-no-wrap lg:border-b text-blue-900 lg:border-gray-500 text-sm leading-5"><div className='lg:hidden text-left text-sm leading-4 text-blue-500 tracking-wider'>Entrada: </div>{order.orderDate}</div>
+            <div className="px-6 py-4 whitespace-no-wrap lg:border-b text-blue-900 border-gray-500 text-sm leading-5"><div className='lg:hidden text-left text-sm leading-4 text-blue-500 tracking-wider'>Salida: </div>{order?.orderFinishDate}</div>
+            <div className="block md:hidden px-6 py-4 whitespace-no-wrap lg:border-b text-blue-900 lg:border-gray-500 text-sm leading-5">
+              <div className="text-sm leading-5 text-blue-900"><div className='lg:hidden text-left text-sm leading-4 text-blue-500 tracking-wider'>Nombre: </div>{order.client.name}</div>
+            </div>
+            <div className="px-6 py-4 whitespace-no-wrap lg:border-b text-blue-900 lg:border-gray-500 text-sm leading-5 col-span-2 md:col-span-4 lg:col-span-1"><div className='lg:hidden text-left text-sm leading-4 text-blue-500 tracking-wider'>Incidencia</div>{order.issue}</div>
+            <div className="px-6 py-4 whitespace-no-wrap md:border-b text-blue-900 md:border-gray-500 text-sm leading-5"><div className='lg:hidden text-left text-sm leading-4 text-blue-500 tracking-wider'>Coste</div>{`${order?.cost}€`}</div>
+            <div className="px-6 py-4 whitespace-no-wrap md:border-b text-blue-900 md:border-gray-500 text-sm leading-5 md:col-span-2 lg:col-span-1">
+            <div className='lg:hidden text-left text-sm leading-4 text-blue-500 tracking-wider'>Estado</div>
+              <span className={`relative inline-block px-3 py-1 font-semibold leading-tight ${TEXT_COLOR[order.state]}`}>
+                <span aria-hidden className={`absolute inset-0 opacity-50 rounded-full ${BG_COLOR[order.state]}`}></span>
+                <span className="relative text-xs">{t(order.state)}</span>
+               </span>
+            </div>
+            <div className="px-6 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 col-span-2 md:col-span-1 md:col-start-4 lg:col-auto text-center md:text-left">
+              <button className="px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none">{t('ORDER_TABLE_VIEW_DETAILS')}</button>
+            </div>
+          </Fragment>
+        ))
+      }
+    </div>
+  </div>
+  </>
 
   )
 }
