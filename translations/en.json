@@ -2,5 +2,16 @@
   "APP_NAME": "Repair Orders",
   "SIGN_IN": "Sign In with %1",
   "LOG_OUT": "Log Out",
-  "CHANGE_LANGUAGE": "Cambiar idioma"
+  "CHANGE_LANGUAGE": "Cambiar idioma",
+  "ORDER_CREATE_BUTTON": "Create new order",
+  "ORDER_TABLE_CREATE_DATE_TEXT": "Created At",
+  "ORDER_TABLE_FINISH_DATE_TEXT": "Finished At",
+  "ORDER_TABLE_CUSTOMER_NAME": "Name",
+  "ORDER_TABLE_ISSUE": "Issue",
+  "ORDER_TABLE_COST": "Cost",
+  "ORDER_TABLE_STATUS_TEXT": "Status",
+  "ORDER_TABLE_VIEW_DETAILS": "View details",
+  "IN_PROGRESS": "In progress",
+  "PENDING": "Pending",
+  "FINISHED": "Finished"
 }

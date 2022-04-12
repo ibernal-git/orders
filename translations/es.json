@@ -2,5 +2,16 @@
   "APP_NAME": "Órdenes de reparación",
   "SIGN_IN": "Iniciar Sesión con %1",
   "LOG_OUT": "Cerrar Sesión",
-  "CHANGE_LANGUAGE": "Change language"
+  "CHANGE_LANGUAGE": "Change language",
+  "ORDER_CREATE_BUTTON": "Crear nueva Orden",
+  "ORDER_TABLE_CREATE_DATE_TEXT": "Entrada",
+  "ORDER_TABLE_FINISH_DATE_TEXT": "Salida",
+  "ORDER_TABLE_CUSTOMER_NAME": "Nombre",
+  "ORDER_TABLE_ISSUE": "Incidencia",
+  "ORDER_TABLE_COST": "Coste",
+  "ORDER_TABLE_STATUS_TEXT": "Estado",
+  "ORDER_TABLE_VIEW_DETAILS": "Ver detalles",
+  "IN_PROGRESS": "En progreso",
+  "PENDING": "Pendiente",
+  "FINISHED": "Terminada"
 }
